@@ -1,4 +1,4 @@
-# VANI AI — AI-Powered E-Commerce Microservice System
+# VANI AI — AI-Powered E-Commerce Shopping Website
 
 VANI AI is an end-to-end, AI-powered e-commerce assistant designed with a scalable **microservices architecture**.  
 It provides AI-based product search, natural-language chatbot interactions, multi-service backend orchestration, and vector search using **MongoDB Atlas**.
