@@ -1,0 +1,159 @@
+/* 🔹 Checkout Header Container */
+.checkout-header {
+  height: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #121212; /* dark theme */
+  color: white;
+
+  display: flex;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* 🔹 Header content wrapper */
+.checkout-header .header-content {
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* 🔹 Left section: logo + Products */
+.checkout-header .checkout-header-left-section {
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+/* 🔹 Checkout logo */
+.checkout-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* spacing between V and ANI.AI */
+  text-decoration: none; /* remove underline */
+  color: inherit; /* keep text color */
+}
+
+.checkout-logo-container:hover {
+  text-decoration: none;
+}
+
+/* 🔹 White square V */
+.logo-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #121212;
+  width: 28px;
+  height: 28px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+/* 🔹 Logo text */
+.logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* 🔹 Products link next to logo */
+.products-link {
+  margin-left: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none; /* remove underline */
+}
+
+.products-link:hover {
+  color: #00e5ff;      /* hover color */
+  text-decoration: none; /* no underline on hover */
+}
+
+/* 🔹 Middle section: Checkout info */
+.checkout-header .checkout-header-middle-section {
+  flex: 1;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* 🔹 Return to home link inside middle section */
+.checkout-header .return-to-home-link {
+  color: #00e5ff;
+  text-decoration: none; /* remove underline */
+  cursor: pointer;
+}
+
+.checkout-header .return-to-home-link:hover {
+  text-decoration: none;
+}
+
+/* 🔹 Right section (empty for now) */
+.checkout-header .checkout-header-right-section {
+  text-align: right;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.checkout-header .checkout-header-right-section img {
+  height: 32px;
+}
+
+/* 🔹 Responsive styles */
+@media (max-width: 1000px) {
+  .checkout-header .checkout-header-middle-section {
+    font-size: 20px;
+    margin-right: 60px;
+  }
+
+  .checkout-header .return-to-home-link {
+    font-size: 20px;
+  }
+
+  .checkout-header .checkout-header-right-section {
+    width: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .checkout-header .checkout-header-left-section {
+    width: auto;
+  }
+
+  .checkout-header .checkout-header-middle-section {
+    margin-right: 5px;
+  }
+
+  .checkout-header .logo {
+    display: none;
+  }
+
+  .checkout-header .mobile-logo {
+    display: inline-block;
+    height: 26px;
+  }
+}

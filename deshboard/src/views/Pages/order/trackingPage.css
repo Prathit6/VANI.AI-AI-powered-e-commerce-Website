@@ -1,0 +1,101 @@
+/* === Tracking Page - Dark Modern Theme === */
+.tracking-page {
+  max-width: 850px;
+  margin: 100px auto;
+  padding: 0 30px;
+  color: #fff;
+  background: #0e0e0e;
+  overflow-x: hidden;
+}
+
+/* Back link */
+.tracking-page .back-to-orders-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+.tracking-page .back-to-orders-link:hover {
+  color: #06b6d4;
+  text-decoration: underline;
+}
+
+/* Delivery Info */
+.tracking-page .delivery-date {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #22c55e;
+}
+.tracking-page .product-info {
+  font-size: 15px;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+/* Product Image */
+.tracking-page .product-image {
+  max-width: 180px;
+  max-height: 180px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  background: #1e1e1e;
+  padding: 8px;
+}
+
+/* === Progress Bar Section === */
+.tracking-page .progress-labels-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.tracking-page .current-status {
+  color: #22c55e;
+}
+
+/* Progress Bar */
+.tracking-page .progress-bar-container {
+  height: 22px;
+  width: 100%;
+  border: 1px solid #333;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.tracking-page .progress-bar {
+  height: 100%;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  border-radius: 50px;
+  width: 50%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+  .tracking-page .progress-labels-container {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 450px) {
+  .tracking-page .progress-labels-container {
+    flex-direction: column;
+    margin-bottom: 6px;
+  }
+
+  .tracking-page .progress-label {
+    margin-bottom: 4px;
+  }
+
+  .tracking-page .product-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}

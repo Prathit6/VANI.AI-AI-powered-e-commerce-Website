@@ -1,0 +1,177 @@
+/* === Orders Page (Dark & Consistent) === */
+.orders-page {
+  max-width: 850px;
+  margin: 100px auto;
+  padding: 0 20px;
+  color: #fff;
+  background: #0e0e0e;
+  overflow-x: hidden;
+}
+
+/* Title */
+.orders-page .page-title {
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 8px;
+  color: #fff;
+}
+
+/* Orders List */
+.orders-page .orders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 50px;
+}
+
+/* Header */
+.orders-page .order-header {
+  background: #121212;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 25px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.orders-page .order-header-left-section {
+  display: flex;
+  flex-shrink: 0;
+  gap: 35px;
+}
+
+.orders-page .order-header-label {
+  font-weight: 700;
+  color: #ccc;
+}
+
+.orders-page .order-date,
+.orders-page .order-total {
+  font-size: 15px;
+  color: #eee;
+}
+
+.orders-page .order-header-right-section {
+  flex-shrink: 1;
+}
+
+/* Responsive Header */
+@media (max-width: 575px) {
+  .orders-page .order-header {
+    flex-direction: column;
+    align-items: start;
+    line-height: 22px;
+    padding: 15px;
+  }
+
+  .orders-page .order-header-left-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* === Order Details === */
+.orders-page .order-details-grid {
+  padding: 30px 25px;
+  border: 1px solid #333;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: grid;
+  grid-template-columns: 110px 1fr 220px;
+  column-gap: 35px;
+  row-gap: 40px;
+  align-items: center;
+  background: #181818;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 800px) {
+  .orders-page .order-details-grid {
+    grid-template-columns: 110px 1fr;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .orders-page .order-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Product Image */
+.orders-page .product-image-container {
+  text-align: center;
+}
+.orders-page .product-image-container img {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 8px;
+  background: #1e1e1e;
+  padding: 6px;
+}
+
+/* Product Info */
+.orders-page .product-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.orders-page .product-delivery-date {
+  color: #22c55e;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.orders-page .product-quantity {
+  color: #bbb;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Product Actions */
+.orders-page .product-actions {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ✅ Unified Button Styles (Dark Gradient) */
+.orders-page .buy-again-button,
+.orders-page .track-package-button {
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #111, #222);
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.orders-page .buy-again-button:hover,
+.orders-page .track-package-button:hover {
+  background: linear-gradient(135deg, #222, #333);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
+}
+
+.orders-page .buy-again-button:active,
+.orders-page .track-package-button:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+/* Icon inside button */
+.orders-page .buy-again-icon {
+  width: 18px;
+  margin-right: 8px;
+}

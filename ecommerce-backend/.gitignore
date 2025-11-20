@@ -1,0 +1,10 @@
+node_modules
+database.sqlite
+# env files
+*.env
+.env.*        # covers .env.local, .env.production etc
+# node / python / build artifacts
+node_modules/
+dist/
+build/
+*.log

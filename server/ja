@@ -1,0 +1,39 @@
+import "dotenv/config"
+import express from "express"
+import cors from "cors"
+import { MongoClient } from "mongodb"
+import { callAgent } from "./agent"
+
+const app = express()
+app.use(cors())
+app.use(express.json())
+
+const client = new MongoClient(process.env.MONGODB_ATLAS_URI!)
+
+async function start() {
+  try {
+    await client.connect()
+    console.log("Server DB connected")
+
+    app.get("/", (req, res) => res.send("Server OK"))
+
+    app.post("/chat", async (req, res) => {
+      const threadId = Date.now().toString()
+      const response = await callAgent(client, req.body.message, threadId)
+      res.json({ threadId, response })
+    })
+
+    app.post("/chat/:threadId", async (req, res) => {
+      const response = await callAgent(client, req.body.message, req.params.threadId)
+      res.json({ response })
+    })
+
+    const PORT = process.env.PORT || 8000
+    app.listen(PORT, () => console.log("Server running on", PORT))
+  } catch (e) {
+    console.error(e)
+    process.exit(1)
+  }
+}
+
+start()
