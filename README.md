@@ -1,4 +1,4 @@
-<img width="1406" height="831" alt="Screenshot 2026-05-23 at 4 01 33 PM" src="https://github.com/user-attachments/assets/bc907f47-d55d-4e9c-9f40-ae27b7de1ea5" /><img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 40 40 PM" src="https://github.com/user-attachments/assets/bfa41aee-ac09-4a1f-936d-3c784c888b8f" /><div align="center">
+
 
 # VANI AI
 ### AI-Powered E-Commerce Shopping Platform
