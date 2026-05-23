@@ -78,6 +78,7 @@ AI-enhanced landing page featuring a hero section, category highlights, featured
 **Review Highlights** — curated user testimonials displayed on the landing page.
 
 <img width="1404" height="831" alt="Landing Page Reviews" src="https://github.com/user-attachments/assets/d4fdce28-2ad2-4a0b-95d8-27f3a42e1e5f" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 5 09 03 PM" src="https://github.com/user-attachments/assets/0a4a1dd2-7251-42f8-b1e4-967f9306e54d" />
 
 <br/>
 
