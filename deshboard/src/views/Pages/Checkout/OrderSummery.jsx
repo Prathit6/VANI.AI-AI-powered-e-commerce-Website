@@ -1,4 +1,4 @@
-// src/pages/Checkout/OrderSummery.jsx
+// src/pages / Checkout / OrderSummery.jsx
 import dayjs from "dayjs";
 import { useCart } from "../../../context/CartProvider";
 import { formatMoney } from "../../../utils/Money";
@@ -31,8 +31,8 @@ export function OrderSummery({ deliveryOptions }) {
               Delivery date:{" "}
               {selectedDeliveryOption
                 ? dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format(
-                    "dddd, MMMM D"
-                  )
+                  "dddd, MMMM D"
+                )
                 : "Not selected"}
             </div>
 

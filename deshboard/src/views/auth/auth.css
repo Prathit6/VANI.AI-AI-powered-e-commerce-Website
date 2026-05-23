@@ -1,0 +1,438 @@
+/* ============================================================
+   auth.css — VANI.AI Auth Pages
+   Theme: White / Light Enterprise
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* ── Reset & Base ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── CSS Variables ────────────────────────────────────── */
+:root {
+  --auth-bg:              #f5f5f3;
+  --auth-card-bg:         #ffffff;
+  --auth-border:          #e4e4e0;
+  --auth-border-focus:    #111111;
+
+  --auth-text-primary:    #111111;
+  --auth-text-secondary:  #6b6b6b;
+  --auth-text-muted:      #9a9a9a;
+
+  --auth-accent-cyan:     #0ea5e9;
+  --auth-accent-amber:    #d97706;
+  --auth-accent-violet:   #7c3aed;
+  --auth-accent-seller:   #b45309;
+
+  --auth-btn-primary-bg:  #111111;
+  --auth-btn-primary-fg:  #ffffff;
+  --auth-btn-hover-bg:    #2a2a2a;
+
+  --auth-input-bg:        #fafafa;
+  --auth-input-border:    #e0e0dc;
+
+  --auth-shadow-card:
+    0 1px 3px rgba(0,0,0,0.06),
+    0 8px 32px rgba(0,0,0,0.08);
+  --auth-shadow-focus:
+    0 0 0 3px rgba(14,165,233,0.15);
+
+  --auth-radius-card:     16px;
+  --auth-radius-input:    10px;
+  --auth-radius-btn:      10px;
+
+  --auth-font:            'DM Sans', sans-serif;
+  --auth-font-display:    'DM Serif Display', serif;
+}
+
+/* ── Page Wrapper ─────────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--auth-bg);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(14,165,233,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(124,58,237,0.05) 0%, transparent 50%);
+  font-family: var(--auth-font);
+  padding: 24px 16px;
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius-card);
+  padding: 40px 36px 36px;
+  box-shadow: var(--auth-shadow-card);
+  animation: auth-card-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes auth-card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.auth-logo-badge {
+  width: 36px;
+  height: 36px;
+  background: var(--auth-text-primary);
+  color: #fff;
+  font-family: var(--auth-font-display);
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
+}
+
+.auth-logo-badge.amber {
+  background: var(--auth-accent-amber);
+  color: #fff;
+}
+
+.auth-logo-badge.violet {
+  background: var(--auth-accent-violet);
+  color: #fff;
+}
+
+.auth-logo-text {
+  font-family: var(--auth-font);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--auth-text-primary);
+}
+
+/* ── Headings ─────────────────────────────────────────── */
+.auth-title {
+  font-family: var(--auth-font-display);
+  font-size: 1.65rem;
+  font-weight: 400;
+  color: var(--auth-text-primary);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.auth-subtitle {
+  font-size: 0.875rem;
+  color: var(--auth-text-secondary);
+  font-weight: 400;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+/* ── Form ─────────────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--auth-text-secondary);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--auth-input-bg);
+  border: 1.5px solid var(--auth-input-border);
+  border-radius: var(--auth-radius-input);
+  font-family: var(--auth-font);
+  font-size: 0.925rem;
+  font-weight: 400;
+  color: var(--auth-text-primary);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.auth-input::placeholder {
+  color: var(--auth-text-muted);
+  font-weight: 300;
+}
+
+.auth-input:focus {
+  border-color: var(--auth-border-focus);
+  box-shadow: var(--auth-shadow-focus);
+  background: #fff;
+}
+
+/* ── Primary Button ───────────────────────────────────── */
+.auth-btn-primary {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--auth-btn-primary-bg);
+  color: var(--auth-btn-primary-fg);
+  border: none;
+  border-radius: var(--auth-radius-btn);
+  font-family: var(--auth-font);
+  font-size: 0.925rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease, opacity 0.18s ease;
+  letter-spacing: 0.01em;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-btn-primary:hover:not(:disabled) {
+  background: var(--auth-btn-hover-bg);
+  transform: translateY(-1px);
+}
+
+.auth-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Color variants */
+.auth-btn-primary.amber {
+  background: var(--auth-accent-amber);
+  color: #fff;
+}
+.auth-btn-primary.amber:hover:not(:disabled) {
+  background: #b45309;
+}
+
+.auth-btn-primary.purple {
+  background: var(--auth-accent-violet);
+  color: #fff;
+}
+.auth-btn-primary.purple:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+.auth-btn-primary.ghost {
+  background: transparent;
+  color: var(--auth-text-primary);
+  border: 1.5px solid var(--auth-border);
+}
+.auth-btn-primary.ghost:hover:not(:disabled) {
+  background: #f5f5f3;
+  transform: translateY(-1px);
+}
+
+/* ── Portal Switch Row ────────────────────────────────── */
+.auth-portal-row {
+  display: flex;
+  gap: 8px;
+}
+
+.auth-portal-row .auth-btn-primary {
+  flex: 1;
+  font-size: 0.82rem;
+  padding: 10px 8px;
+  min-height: 40px;
+  font-weight: 500;
+}
+
+/* ── Redirect Text ────────────────────────────────────── */
+.auth-redirect {
+  font-size: 0.855rem;
+  color: var(--auth-text-secondary);
+  text-align: center;
+}
+
+.auth-redirect a,
+.auth-redirect span[style] {
+  color: var(--auth-text-primary) !important;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+
+.auth-redirect a:hover,
+.auth-redirect span[style]:hover {
+  opacity: 0.65;
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.auth-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--auth-border);
+}
+
+.auth-divider-text {
+  font-size: 0.78rem;
+  color: var(--auth-text-muted);
+  font-weight: 400;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Social Buttons ───────────────────────────────────── */
+.auth-social {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.auth-social-btn {
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--auth-border);
+  background: #fff;
+  border-radius: var(--auth-radius-btn);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+
+.auth-social-btn:hover {
+  border-color: #c0c0bc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.auth-social-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Checkbox Row ─────────────────────────────────────── */
+.auth-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--auth-text-primary);
+  flex-shrink: 0;
+}
+
+.auth-checkbox-row label {
+  font-size: 0.855rem;
+  color: var(--auth-text-secondary);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.auth-checkbox-row label a,
+.auth-checkbox-row label span {
+  color: var(--auth-text-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Notice Banner ────────────────────────────────────── */
+.auth-notice {
+  font-size: 0.8rem;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Seller Badge Strip (top of card) ────────────────── */
+.auth-seller-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--auth-border);
+}
+
+.auth-seller-badge {
+  width: 38px;
+  height: 38px;
+  background: var(--auth-accent-amber);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.auth-seller-badge svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+.auth-seller-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.auth-seller-header-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--auth-text-primary);
+}
+
+.auth-seller-header-sub {
+  font-size: 0.78rem;
+  color: var(--auth-text-muted);
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 32px 24px 28px;
+    border-radius: 12px;
+  }
+
+  .auth-title {
+    font-size: 1.45rem;
+  }
+}

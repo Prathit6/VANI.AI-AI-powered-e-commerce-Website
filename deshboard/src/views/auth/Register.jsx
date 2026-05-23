@@ -1,124 +1,151 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaGoogle, FaFacebook } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { user_register, messageClear } from '../../store/Reducers/authReducer';
+import { PropagateLoader } from 'react-spinners';
+import toast from 'react-hot-toast';
+import '../auth/auth.css';
+
+const GoogleIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+  </svg>
+);
+
+const FacebookIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" fill="#1877F2" />
+  </svg>
+);
 
 const Register = () => {
-    const [state, setState] = useState({
-        name: "",
-        email: "",
-        password: ""
-    });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loader, errorMessage, successMessage } = useSelector((state) => state.auth);
+  const [state, setState] = useState({ name: '', email: '', password: '' });
+  const [agreed, setAgreed] = useState(false);
 
-    const inputHandle = (e) => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        });
-    };
+  const inputHandle = (e) => setState({ ...state, [e.target.name]: e.target.value });
 
-    const submit = (e) => {
-        e.preventDefault();
-        console.log(state);
-    };
+  const submit = (e) => {
+    e.preventDefault();
+    if (!agreed) { toast.error('Please agree to the privacy policy & terms'); return; }
+    dispatch(user_register(state));
+  };
 
-    return (
-        <div className='min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center'>
-            <div className='w-[350px] text-[#ffffff] p-2'>
-                <div className='bg-[#6f68d1] p-4 rounded-md'>
-                    <h2 className='text-xl mb-3 font-bold'>Welcome to Ecommerce</h2>
-                    <p className='text-sm mb-3 font-medium'>Please register your account</p>
+  const overrideStyle = {
+    display: 'flex', margin: '0 auto',
+    height: '24px', justifyContent: 'center', alignItems: 'center',
+  };
 
-                    <form onSubmit={submit}>
-                        {/* Name */}
-                      {/* Name */}
-<div className='flex flex-col w-full gap-1 mb-3'>
-    <label htmlFor="name" className="text-left">Name</label>
-    <input
-        onChange={inputHandle}
-        value={state.name}
-        className='px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md w-full'
-        type="text"
-        name='name'
-        placeholder='Name'
-        id='name'
-        required
-    />
-</div>
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(messageClear());
+      return;
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      setTimeout(() => dispatch(messageClear()), 100);
+      navigate('/');
+    }
+  }, [errorMessage, successMessage]);
 
-{/* Email */}
-<div className='flex flex-col w-full gap-1 mb-3'>
-    <label htmlFor="email" className="text-left">Email</label>
-    <input
-        onChange={inputHandle}
-        value={state.email}
-        className='px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md w-full'
-        type="email"
-        name='email'
-        placeholder='Email'
-        id='email'
-        required
-    />
-</div>
+  return (
+    <div className="auth-page">
+      <div className="auth-card">
 
-{/* Password */}
-<div className='flex flex-col w-full gap-1 mb-3'>
-    <label htmlFor="password" className="text-left">Password</label>
-    <input
-        onChange={inputHandle}
-        value={state.password}
-        className='px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md w-full'
-        type="password"
-        name='password'
-        placeholder='Password'
-        id='password'
-        required
-    />
-</div>
-
-                        {/* Checkbox */}
-                        <div className='flex items-center w-full gap-3 mb-3'>
-                            <input
-                                className='w-4 h-4 text-blue-600 overflow-hidden bg-gray-200 rounded border-gray-300 focus:ring-blue-500'
-                                type="checkbox"
-                                name="checkbox"
-                                id="checkbox"
-                            />
-                            <label htmlFor="checkbox"> I agree to privacy policy & terms</label>
-                        </div>
-
-                        {/* Submit Button */}
-                        <button className='bg-slate-800 w-full hover:shadow-blue-300/ hover:shadow-lg text-white rounded-md px-7 py-2 mb-3'>
-                            Sign Up
-                        </button>
-
-                        {/* Login Link */}
-                        <div className='flex items-center mb-3 gap-3 justify-center'>
-                            <p>Already have an account? <Link className='font-bold' to="/login">Sign In</Link></p>
-                        </div>
-
-                        {/* OR Separator */}
-                        <div className='w-full flex justify-center items-center mb-3'>
-                            <div className='w-[45%] bg-slate-700 h-[1px]'></div>
-                            <div className='w-[10%] flex justify-center items-center'>
-                                <span className='pb-1'>Or</span>
-                            </div>
-                            <div className='w-[45%] bg-slate-700 h-[1px]'></div>
-                        </div>
-
-                        {/* Social Login Buttons */}
-                        <div className='flex justify-center items-center gap-3'>
-                            <div className='w-[135px] h-[35px] flex rounded-md bg-orange-700 shadow-lg hover:shadow-orange-700/50 justify-center cursor-pointer items-center overflow-hidden'>
-                                <FaGoogle className="text-white" />
-                            </div>
-                            <div className='w-[135px] h-[35px] flex rounded-md bg-blue-700 shadow-lg hover:shadow-blue-700/50 justify-center cursor-pointer items-center overflow-hidden'>
-                                <FaFacebook className="text-white" />
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div className="auth-logo">
+          <span className="auth-logo-badge">V</span>
+          <span className="auth-logo-text">ANI.AI</span>
         </div>
-    );
+
+        <h2 className="auth-title">Create account</h2>
+        <p className="auth-subtitle">Register to start shopping</p>
+
+        <form className="auth-form" onSubmit={submit}>
+
+          <div className="auth-field">
+            <label className="auth-label">Name</label>
+            <input
+              className="auth-input"
+              type="text" name="name"
+              placeholder="Your full name"
+              value={state.name}
+              onChange={inputHandle}
+              required
+            />
+          </div>
+
+          <div className="auth-field">
+            <label className="auth-label">Email</label>
+            <input
+              className="auth-input"
+              type="email" name="email"
+              placeholder="you@example.com"
+              value={state.email}
+              onChange={inputHandle}
+              required
+            />
+          </div>
+
+          <div className="auth-field">
+            <label className="auth-label">Password</label>
+            <input
+              className="auth-input"
+              type="password" name="password"
+              placeholder="Create a password"
+              value={state.password}
+              onChange={inputHandle}
+              required
+            />
+          </div>
+
+          <div className="auth-checkbox-row">
+            <input
+              type="checkbox" id="agree"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+            />
+            <label htmlFor="agree">
+              I agree to the{' '}
+              <span>privacy policy &amp; terms</span>
+            </label>
+          </div>
+
+          <button type="submit" className="auth-btn-primary" disabled={loader}>
+            {loader
+              ? <PropagateLoader color="#fff" cssOverride={overrideStyle} />
+              : 'Create Account'}
+          </button>
+
+          <p className="auth-redirect">
+            Already have an account?{' '}
+            <Link to="/login">Sign In</Link>
+          </p>
+
+          <div className="auth-divider">
+            <div className="auth-divider-line" />
+            <span className="auth-divider-text">Or continue with</span>
+            <div className="auth-divider-line" />
+          </div>
+
+          <div className="auth-social">
+            <button type="button" className="auth-social-btn">
+              <GoogleIcon />
+            </button>
+            <button type="button" className="auth-social-btn">
+              <FacebookIcon />
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Register;

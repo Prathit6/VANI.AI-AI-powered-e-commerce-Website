@@ -1,195 +1,350 @@
-/* ========================
-   HEADER STYLING
-   Matches index.css theme
-======================== */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-/* Full dark header */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-  background: #121212;
-  color: #fff;
+.site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
-  border-bottom: 1px solid #333;
+  height: 64px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+   pointer-events: none;
 }
-
-/* Left section (Logo + Products) */
-.left-section {
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
+  pointer-events: auto;
+  gap: 32px;
+  padding: 0 24px;
 }
 
-/* Logo text */
-.logo-text {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #ffffff;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-}
-
-/* Logo square */
-.logo-square {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  color: #121212;
-  width: 28px;
-  height: 28px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  border-radius: 4px;
-  margin-right: 5px;
-}
-
-/* Products link */
-.products-text {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-/* Middle section (Search bar + icon) */
-.middle-section {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.search-bar {
-  padding: 10px 16px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  background: #1e1e1e;
-  color: #fff;
-  width: 240px;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-}
-
-.search-bar:focus {
-  background: #2c2c2c;
-  box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
-  width: 280px;
-}
-
-.search-button {
-  position: absolute;
-  right: 8px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  width: 20px;
-  height: 20px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.search-bar:hover + .search-button .search-icon,
-.search-bar:focus + .search-button .search-icon {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Right section (AI Assistant + Orders + Cart) */
-.right-section {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.3s ease;
-}
-
-.header-link:hover {
-  color: #00e5ff;
-}
-
-/* AI Assistant highlight */
-.ai-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #00e5ff;
-}
-
-/* Cart section */
-.cart-link {
-  position: relative;
+/* ── Logo ── */
+.header-logo {
   display: flex;
   align-items: center;
   gap: 6px;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
-.cart-icon {
-  width: 22px;
+.logo-badge {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  color: #0a0a0a;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
 }
 
-.cart-quantity {
+.logo-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.logo-dot {
+  color: #22c55e;
+}
+
+/* ── Nav ── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── Right ── */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Cart */
+.cart-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.cart-btn:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.cart-badge {
   position: absolute;
   top: -6px;
-  right: -10px;
-  background: #ff3b3b;
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 50%;
+  right: -6px;
+  background: #22c55e;
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid #0a0a0a;
 }
 
-.cart-text {
-  font-size: 0.9rem;
-}
-
-/* ============================
-   Buttons (match index.css)
-============================ */
-
-/* Generic button (like Login, or others in header) */
-.header .button-primary,
-.login-btn {
-  color: #fff;
-  background: linear-gradient(135deg, #222, #444);
-  border: 1px solid transparent;
-  border-radius: 20px;
-  font-weight: 600;
+/* User Menu */
+.user-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
-  padding: 8px 18px;
-  transition: all 0.25s ease;
-  box-shadow: 0 3px 6px rgba(255, 255, 255, 0.1);
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
-/* Hover and active states */
-.header .button-primary:hover,
-.login-btn:hover {
-  background: linear-gradient(135deg, #333, #555);
-  transform: translateY(-2px);
+.user-menu:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
 }
 
-.header .button-primary:active,
-.login-btn:active {
-  background: #000;
-  transform: translateY(0);
-  box-shadow: none;
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--role-color) 20%, #1a1a1a);
+  border: 1.5px solid var(--role-color);
+  color: var(--role-color);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.user-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
+.chevron {
+  color: rgba(255,255,255,0.4);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  padding: 8px;
+  animation: dropIn 0.15s ease;
+  z-index: 100;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  margin-bottom: 4px;
+}
+
+.dropdown-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--role-color) 20%, #1a1a1a);
+  border: 1.5px solid var(--role-color);
+  color: var(--role-color);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dropdown-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dropdown-email {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 1px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 4px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+}
+
+.logout-item:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-ghost {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+}
+
+.btn-solid {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.btn-solid:hover {
+  background: #e5e5e5;
+  transform: translateY(-1px);
+}
+
+/* Default avatar (not logged in) */
+.default-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+}
+
+@media (max-width: 640px) {
+  .user-info { display: none; }
+  .header-nav { display: none; }
+  .logo-name { font-size: 1.1rem; }
 }

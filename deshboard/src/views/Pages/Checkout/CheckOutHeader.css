@@ -16,6 +16,45 @@
   z-index: 1000;
 }
 
+/* Logo — identical to main Header */
+.checkout-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.checkout-logo-badge {
+  background: #000;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.checkout-logo-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.checkout-logo-dot {
+  color: #ef4444;
+}
+
+/* Item count highlight */
+.checkout-header .return-to-home-link {
+  color: #ef4444;
+  font-weight: 700;
+}
+
 /* 🔹 Header content wrapper */
 .checkout-header .header-content {
   width: 100%;

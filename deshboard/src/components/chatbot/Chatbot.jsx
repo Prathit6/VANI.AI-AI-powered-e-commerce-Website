@@ -36,7 +36,7 @@ export const Chatbot = () => {
     <div className="fixed bottom-5 right-5 w-96 bg-white shadow-xl rounded-2xl border border-gray-200 flex flex-col overflow-hidden z-50">
       {/* Header */}
       <div className="bg-green-600 text-white p-3 font-semibold text-center">
-        🛍️ AI Shopping Assistant
+        🛍️ AI Shopping Assistantiii
       </div>
 
       {/* Messages */}

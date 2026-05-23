@@ -1,38 +1,64 @@
-import { useState } from "react";
-import { Provider } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { Toaster } from "react-hot-toast";
-import "./App.css";
-import { Header } from "./components/Header";
-import RouterComponent from "./router/Router.jsx";
-import publicRoute from "./router/routes/publicRoute.jsx";
-import { CartProvider } from "./context/CartProvider.jsx";
-import authReducer from "./store/Reducers/authReducer";
+import { Toaster } from 'react-hot-toast';
+import './App.css';
+import authReducer, { get_user_info } from './store/Reducers/authReducer';
+import { CartProvider } from './context/CartProvider';
+import { SocketProvider } from './context/SocketProvider';   // ← ADD THIS
+import AppRouter from './router/Router';
+import StoreNotificationPopup from './components/StoreNotificationPopup';
 
-// Create Redux store
 const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
+  reducer: { auth: authReducer },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+    getDefaultMiddleware({ serializableCheck: false }),
   devTools: true,
 });
 
+function AppContent() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const savedToken = localStorage.getItem('accessToken');
+    if (savedToken) {
+      dispatch(get_user_info()).unwrap().catch(() => { });
+    }
+  }, [dispatch]);
+
+  return (
+    <CartProvider>
+      <StoreNotificationPopup
+        storeName="YourStore.com"
+        logoSrc="/logo.png"
+        delayMs={2000}
+        storageKey="store_notif_v1"
+        onAllow={() => console.log('User subscribed!')}
+      />
+      <SocketProvider>        {/* ← WRAP APPROUTER */}
+        <AppRouter />
+      </SocketProvider>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: '#1a1a1a',
+            color: '#fff',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: '10px',
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '14px',
+          },
+        }}
+      />
+    </CartProvider>
+  );
+}
+
 function App() {
-  const [allRoutes] = useState([...publicRoute]);
-  
   return (
     <Provider store={store}>
-      <CartProvider>
-       
-        <Header />
-        <div style={{ marginTop: "80px" }}>
-          <RouterComponent allRoutes={allRoutes} />
-        </div>
-      </CartProvider>
+      <AppContent />
     </Provider>
   );
 }

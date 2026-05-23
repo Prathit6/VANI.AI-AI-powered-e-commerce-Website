@@ -1,89 +1,77 @@
-// src/pages/Home/Product.jsx
 import { useState } from "react";
-import { useCart } from "../../../context/CartProvider";
+import { useNavigate } from "react-router-dom";
 import { formatMoney } from "../../../utils/Money";
-import "../../../index.css";
 
-export function Product({ product, loadCart }) {
-  const { addToCart } = useCart();
-  const [quantity, setQuantity] = useState(1);
-  const [showNotification, setShowNotification] = useState(false);
+const FONT = "'Helvetica Neue', Helvetica, Arial, sans-serif";
 
-  const handleAddToCart = async () => {
-    const success = await addToCart(product, quantity);
-    
-    if (success) {
-      setShowNotification(true);
-      loadCart(); // update cart in header
-      
-      // Hide notification after 3s
-      setTimeout(() => setShowNotification(false), 3000);
-      
-      // Reset quantity to 1 after adding
-      setQuantity(1);
-    }
-  };
+export function Product({ product }) {
+  const [hov, setHov] = useState(false);
+  const navigate = useNavigate();
+
+  const stars = product.rating?.stars || 0;
+  const count = product.rating?.count || 0;
+
+  // ✅ Support both MongoDB _id and plain id
+  const productId = product._id || product.id;
 
   return (
-    <>
-      {/* Toast Notification - Top Right */}
-      {showNotification && (
-        <div className="toast-notification-right">
-          <div className="toast-icon">✓</div>
-          <div className="toast-content">
-            <div className="toast-title">Added to Cart!</div>
-            <div className="toast-message">{product.name}</div>
+    <div
+      style={{ display: "flex", flexDirection: "column", cursor: "pointer" }}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      onClick={() => navigate(`/products/${productId}`)}
+    >
+      {/* Image */}
+      <div style={{ aspectRatio: "1 / 1", overflow: "hidden", background: "#f2f2f2", position: "relative", marginBottom: 10 }}>
+        <img
+          src={product.image}
+          alt={product.name}
+          style={{
+            width: "100%", height: "100%", objectFit: "cover", display: "block",
+            transform: hov ? "scale(1.10)" : "scale(1)",
+            transition: "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          }}
+        />
+        {/* Badges */}
+        {(product.isNew || product.isTrending) && (
+          <div style={{ position: "absolute", bottom: 10, left: 10, display: "flex", gap: 6 }}>
+            {product.isNew && (
+              <span style={{ background: "#f5d061", color: "#111", fontFamily: FONT, fontSize: 10, fontWeight: 500, padding: "2px 9px", borderRadius: 999, letterSpacing: "0.04em" }}>New</span>
+            )}
+            {product.isTrending && (
+              <span style={{ background: "#7dd3c8", color: "#111", fontFamily: FONT, fontSize: 10, fontWeight: 500, padding: "2px 9px", borderRadius: 999, letterSpacing: "0.04em" }}>Trending</span>
+            )}
           </div>
+        )}
+      </div>
+
+      {/* Name */}
+      <p style={{
+        fontFamily: FONT, fontSize: 14, fontWeight: 400, color: "#111",
+        lineHeight: 1.4, margin: "0 0 4px",
+        textDecoration: hov ? "underline" : "none",
+        textUnderlineOffset: "2px", textDecorationThickness: "1px",
+      }}>
+        {product.name}
+      </p>
+
+      {/* Stars */}
+      {count > 0 && (
+        <div style={{ display: "flex", alignItems: "center", gap: 2, marginBottom: 4 }}>
+          {Array(5).fill(0).map((_, i) => (
+            <span key={i} style={{ fontSize: 12, color: i < stars ? "#f5a623" : "#e0e0e0", lineHeight: 1 }}>★</span>
+          ))}
+          <span style={{ fontFamily: FONT, fontSize: 11, color: "#999", marginLeft: 3 }}>{count}</span>
         </div>
       )}
 
-      <div className="product-container">
-        <div className="product-image-container">
-          <img className="product-image" src={product.image} alt={product.name} />
-        </div>
-
-        <div className="product-name">{product.name}</div>
-
-        <div className="product-rating-container">
-          {Array(5)
-            .fill(0)
-            .map((_, i) => (
-              <span
-                key={i}
-                className={i < (product.rating?.stars || 0) ? "star filled" : "star"}
-              >
-                ★
-              </span>
-            ))}
-          <span className="product-rating-count">
-            {product.rating?.count || 0}
-          </span>
-        </div>
-
-        <div className="product-price">{formatMoney(product.priceCents)}</div>
-
-        <div className="product-quantity-container">
-          <select 
-            value={quantity} 
-            onChange={(e) => setQuantity(Number(e.target.value))}
-          >
-            {[...Array(10)].map((_, i) => (
-              <option key={i + 1} value={i + 1}>
-                {i + 1}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="product-spacer"></div>
-
-        <button 
-          className="add-to-cart-button button-primary" 
-          onClick={handleAddToCart}
-        >
-          Add to Cart
-        </button>
-      </div>
-    </>
+      {/* Price */}
+      <p style={{ fontFamily: FONT, fontSize: 14, fontWeight: 400, color: "#111", margin: 0 }}>
+        {product.priceFrom && <span style={{ color: "#999", marginRight: 3, fontSize: 13 }}>From</span>}
+        {formatMoney(product.priceCents)}
+      </p>
+    </div>
   );
 }
+
+export default Product;

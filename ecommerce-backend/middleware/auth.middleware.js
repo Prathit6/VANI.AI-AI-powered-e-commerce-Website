@@ -1,48 +1,30 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
-export const authenticationMiddleware = async function (req, res, next) {
+// This middleware reads the same JWT that your MongoDB Backend (port 5001) issues.
+// It works as a cookie ("accessToken") OR as a Bearer token in Authorization header.
+export const authMiddleware = (req, res, next) => {
   try {
-    const tokenHeader = req.headers["authorization"]; //try to read the headers
-    //id header not exist then send
-    if (!tokenHeader) {
-      console.log("⚠️ No Authorization header found");
-      return next(); // proceed without login
+    // 1. Try cookie first (set by MongoDB auth backend)
+    let token = req.cookies?.accessToken;
+
+    // 2. Fall back to Authorization: Bearer <token>
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader?.startsWith('Bearer ')) {
+        token = authHeader.split(' ')[1];
+      }
     }
 
-    if (!tokenHeader.startsWith("Bearer ")) {
-      return res
-        .status(400)
-        .json({ error: "authorization header must statr with Bearer " });
+    if (!token) {
+      return res.status(401).json({ error: 'Please login first' });
     }
-    const token = tokenHeader.split(" ")[1];
-    console.log("Extracted token:", token);
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    req.user = decoded;
+    // decoded has { id, role } — same shape your MongoDB auth backend signs
+    req.userId = decoded.id;
+    req.role = decoded.role;
     next();
-  } catch (error) {
-    next();
+  } catch {
+    return res.status(401).json({ error: 'Invalid or expired token' });
   }
-};
-
-//here now i can create one more middle ware
-//middleware insure that tou have to be login
-export const ensureAuthentication = function (req, res, next) {
-  if (!req.user) {
-    return res.status(401).json({ error: "You must be authenticated" });
-  }
-  next();
-};
-
-//this is for authotization purpose
-
-export const restrictToUser = function (role) {
-  return function (req, res, next) {
-    if (req.user.role !== role) {
-      return res
-        .status(401)
-        .json({ error: "You are not authorized to access this resource" });
-    }
-    next();
-  };
 };

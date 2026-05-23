@@ -1,15 +1,14 @@
 import "./trackingPage.css";
-import { Link } from "react-router";
-import {Header} from "../../../components/Header"
+import { Link } from "react-router-dom";
+
 export function TrackingPage() {
   return (
     <>
-     <title>Tracking</title>
-     <Header />
-
+      <title>Tracking</title>
       <div className="tracking-page">
         <div className="order-tracking">
-          <Link className="back-to-orders-link link-primary"  to="/orders">
+
+          <Link className="back-to-orders-link link-primary" to="/orders">
             View all orders
           </Link>
 
@@ -18,12 +17,12 @@ export function TrackingPage() {
           <div className="product-info">
             Black and Gray Athletic Cotton Socks - 6 Pairs
           </div>
-
           <div className="product-info">Quantity: 1</div>
 
           <img
             className="product-image"
             src="images/products/athletic-cotton-socks-6-pairs.jpg"
+            alt="Athletic Cotton Socks"
           />
 
           <div className="progress-labels-container">
@@ -35,6 +34,7 @@ export function TrackingPage() {
           <div className="progress-bar-container">
             <div className="progress-bar"></div>
           </div>
+
         </div>
       </div>
     </>

@@ -1,13 +1,19 @@
-// src/pages/Home/ProductsGrid.jsx
 import { Product } from "./Product";
-import "../../../index.css";
 
 export function ProductsGrid({ products, loadCart }) {
   return (
-    <div className="products-grid">
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+        gap: "40px 20px",
+      }}
+    >
       {products.map((product) => (
         <Product key={product.id} product={product} loadCart={loadCart} />
       ))}
     </div>
   );
 }
+
+export default ProductsGrid;

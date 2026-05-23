@@ -7,6 +7,11 @@ export const Order = sequelize.define('Order', {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true
   },
+  // userId comes from the JWT token (MongoDB user _id as string)
+  userId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   orderTimeMs: {
     type: DataTypes.BIGINT,
     allowNull: false

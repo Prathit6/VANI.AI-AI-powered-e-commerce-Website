@@ -1,101 +1,150 @@
-/* === Tracking Page - Dark Modern Theme === */
+/* ============================================================
+   trackingPage.css — white / clean theme
+   ============================================================ */
+
+/* ── Page wrapper ───────────────────────────────────────────── */
 .tracking-page {
-  max-width: 850px;
-  margin: 100px auto;
-  padding: 0 30px;
-  color: #fff;
-  background: #0e0e0e;
-  overflow-x: hidden;
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 40px 24px 80px;
 }
 
-/* Back link */
-.tracking-page .back-to-orders-link {
-  display: inline-block;
-  margin-bottom: 30px;
-  color: #38bdf8;
-  text-decoration: none;
+/* ── Order tracking card ────────────────────────────────────── */
+.order-tracking {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Back link ──────────────────────────────────────────────── */
+.back-to-orders-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
   font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 7px;
+  padding: 7px 14px;
+  width: fit-content;
+  transition: background 0.15s, border-color 0.15s;
 }
-.tracking-page .back-to-orders-link:hover {
-  color: #06b6d4;
-  text-decoration: underline;
+.back-to-orders-link::before {
+  content: "←";
+  font-size: 14px;
+}
+.back-to-orders-link:hover {
+  background: #f5f5f5;
+  border-color: #bbb;
 }
 
-/* Delivery Info */
-.tracking-page .delivery-date {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #22c55e;
+/* ── Delivery date ──────────────────────────────────────────── */
+.delivery-date {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
-.tracking-page .product-info {
+
+/* ── Product info ───────────────────────────────────────────── */
+.product-info {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+.product-info:first-of-type {
+  font-weight: 600;
+  color: #222;
   font-size: 15px;
-  color: #ccc;
-  margin-bottom: 6px;
 }
 
-/* Product Image */
-.tracking-page .product-image {
-  max-width: 180px;
-  max-height: 180px;
-  margin-top: 25px;
-  margin-bottom: 50px;
+/* ── Product image ──────────────────────────────────────────── */
+.product-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
   border-radius: 10px;
-  background: #1e1e1e;
-  padding: 8px;
+  border: 1px solid #e8e8e8;
+  background: #f5f5f5;
 }
 
-/* === Progress Bar Section === */
-.tracking-page .progress-labels-container {
+/* ── Divider ────────────────────────────────────────────────── */
+.order-tracking hr,
+.order-tracking .divider {
+  border: none;
+  border-top: 1px solid #ebebeb;
+  margin: 4px 0;
+}
+
+/* ── Progress labels ────────────────────────────────────────── */
+.progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.progress-label {
+  font-size: 13px;
   font-weight: 500;
-  margin-bottom: 12px;
-  color: #ccc;
+  color: #aaa;
+  text-align: center;
+  flex: 1;
 }
 
-.tracking-page .current-status {
-  color: #22c55e;
+.progress-label.current-status {
+  color: #111;
+  font-weight: 700;
+  position: relative;
 }
 
-/* Progress Bar */
-.tracking-page .progress-bar-container {
-  height: 22px;
+.progress-label.current-status::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: #111;
+  border-radius: 50%;
+  margin: 5px auto 0;
+}
+
+/* ── Progress bar ───────────────────────────────────────────── */
+.progress-bar-container {
   width: 100%;
-  border: 1px solid #333;
-  border-radius: 50px;
+  height: 6px;
+  background: #ebebeb;
+  border-radius: 99px;
   overflow: hidden;
-  background: #1a1a1a;
 }
 
-.tracking-page .progress-bar {
+.progress-bar {
   height: 100%;
-  background: linear-gradient(135deg, #22c55e, #15803d);
-  border-radius: 50px;
-  width: 50%;
-  transition: width 0.3s ease-in-out;
+  width: 55%;          /* Shipped = ~55% through the journey */
+  background: #111;
+  border-radius: 99px;
+  transition: width 0.6s ease;
 }
 
-/* Responsive */
-@media (max-width: 575px) {
-  .tracking-page .progress-labels-container {
-    font-size: 16px;
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .order-tracking {
+    padding: 24px 20px;
   }
-}
-
-@media (max-width: 450px) {
-  .tracking-page .progress-labels-container {
-    flex-direction: column;
-    margin-bottom: 6px;
+  .delivery-date {
+    font-size: 18px;
   }
-
-  .tracking-page .progress-label {
-    margin-bottom: 4px;
-  }
-
-  .tracking-page .product-image {
-    max-width: 150px;
-    max-height: 150px;
+  .progress-label {
+    font-size: 11px;
   }
 }
