@@ -9,11 +9,12 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    caseSensitive: false,    // ← sirf ye line add karo
   },
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000", // matches your backend PORT
+        target: "http://localhost:3000",
         changeOrigin: true,
       },
       "/images": {
