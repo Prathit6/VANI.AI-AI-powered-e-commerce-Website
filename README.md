@@ -74,18 +74,18 @@ Key highlights:
 
 > AI-enhanced landing page featuring a hero section, category highlights, featured products, and a semantic search bar.
 
-![Landing Page — Hero Section]<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 05 PM" src="https://github.com/user-attachments/assets/599cab72-55e1-44a7-aea0-514b66eb3cb1" />
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 05 PM" src="https://github.com/user-attachments/assets/599cab72-55e1-44a7-aea0-514b66eb3cb1" />
 
 
 
 > ⭐ **Review Highlights** — curated user testimonials displayed on the landing page.
 
-![Landing Page — Reviews Section]<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 19 PM" src="https://github.com/user-attachments/assets/d4fdce28-2ad2-4a0b-95d8-27f3a42e1e5f" />
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 19 PM" src="https://github.com/user-attachments/assets/d4fdce28-2ad2-4a0b-95d8-27f3a42e1e5f" />
 
 
 > 🦶 **Footer**
 
-![Footer]<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 31 PM" src="https://github.com/user-attachments/assets/edc33e74-ab24-496c-a7f1-badca3c04c61" />
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 31 PM" src="https://github.com/user-attachments/assets/edc33e74-ab24-496c-a7f1-badca3c04c61" />
 
 
 ---
@@ -94,14 +94,8 @@ Key highlights:
 
 > Secure, role-based login and registration flows for all three user types.
 
-| User Login | User Register |
-|:---:|:---:|
-| ![Login](./screenshots/login.png)<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 47 12 PM" src="https://github.com/user-attachments/assets/55d1a655-e92e-4545-b2dd-ee5a132a0d7f" />
-<img width="1406" height="831" alt="Screenshot 2026-05-23 at 4 01 54 PM" src="https://github.com/user-attachments/assets/ca863531-0b67-4e90-b34a-f9f45ae8a9c4" />
-<img width="1406" height="831" alt="Screenshot 2026-05-23 at 4 02 10 PM" src="https://github.com/user-attachments/assets/5ef58441-ddb7-432f-8d63-86498db5bc42" />
-<img width="1406" height="831" alt="Screenshot 2026-05-23 at 4 02 05 PM" src="https://github.com/user-attachments/assets/1a38882c-211f-4c2a-9f5c-c0cf2c293098" />
-
- | ![Register](./screenshots/register.png) |
+ User Login 
+ (./screenshots/login.png)<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 47 12 PM" src="https://github.com/user-attachments/assets/55d1a655-e92e-4545-b2dd-ee5a132a0d7f" />
 
 ---
 
@@ -110,43 +104,43 @@ Key highlights:
 #### Product Listing & Categories
 > Browse all published products with category filters and semantic search.
 
-![Products Page]<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 40 40 PM" src="https://github.com/user-attachments/assets/ac9efa90-77a7-48ab-bdce-6a8fb0f7706a" />
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 40 40 PM" src="https://github.com/user-attachments/assets/ac9efa90-77a7-48ab-bdce-6a8fb0f7706a" />
 
 
 #### Product Detail & Reviews
 > View full product details, images, descriptions, and community reviews.
 
-![Product Detail]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 26 PM" src="https://github.com/user-attachments/assets/2c72ff4b-3546-4828-aac5-fb1634016d24" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 26 PM" src="https://github.com/user-attachments/assets/2c72ff4b-3546-4828-aac5-fb1634016d24" />
 
 
 #### Shopping Cart
 > Manage cart items, update quantities, and view the running total.
 
-![Cart]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 43 PM" src="https://github.com/user-attachments/assets/b29e995a-f801-4863-bc83-83600da3d881" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 43 PM" src="https://github.com/user-attachments/assets/b29e995a-f801-4863-bc83-83600da3d881" />
 
 
 #### Checkout Page
 > Multi-step checkout with address and order summary confirmation.
 
-![Checkout]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 43 PM" src="https://github.com/user-attachments/assets/b7e8f164-1b95-4692-a529-8cabad80df9a" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 43 PM" src="https://github.com/user-attachments/assets/b7e8f164-1b95-4692-a529-8cabad80df9a" />
 
 
 #### Payment — Razorpay Integration
 > Secure payment processing powered by **Razorpay**.
 
-![Payment — Razorpay]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 51 PM" src="https://github.com/user-attachments/assets/f9d4b6e8-e3ce-41d3-ac44-61628f3b6eb2" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 46 51 PM" src="https://github.com/user-attachments/assets/f9d4b6e8-e3ce-41d3-ac44-61628f3b6eb2" />
 
 
 #### Order Confirmation & Summary
 > Instant post-payment order summary with all transaction details.
 
-![Order Summary]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 47 06 PM" src="https://github.com/user-attachments/assets/738e8c99-c138-47d9-9887-cdc15d99e1e6" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 47 06 PM" src="https://github.com/user-attachments/assets/738e8c99-c138-47d9-9887-cdc15d99e1e6" />
 
 
 #### Order Tracking
 > Real-time order status and shipment tracking page.
 
-![Order Tracking]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 47 12 PM" src="https://github.com/user-attachments/assets/0ad9a5a0-d409-4ef3-9509-45ce4a93aa8f" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 47 12 PM" src="https://github.com/user-attachments/assets/0ad9a5a0-d409-4ef3-9509-45ce4a93aa8f" />
 
 
 ---
@@ -155,7 +149,7 @@ Key highlights:
 
 > Conversational AI powered by **Google Gemini** — understands natural language, recommends products, and helps users find exactly what they need.
 
-![AI Chat Assistant]![Screenshot 2025-11-19 at 1 54 10 PM](https://github.com/user-attachments/assets/b9add2f1-e4a6-4d38-9bd0-050429173da1)
+![Screenshot 2025-11-19 at 1 54 10 PM](https://github.com/user-attachments/assets/b9add2f1-e4a6-4d38-9bd0-050429173da1)
 
 ---
 
@@ -163,8 +157,9 @@ Key highlights:
 
 > Manage personal information, view order history, and update account settings.
 
-![User Profile]
 
+
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 44 37 PM" src="https://github.com/user-attachments/assets/7ed3de40-a6dd-4466-bbdb-ee2b6e226365" />
 
 
 ---
@@ -176,13 +171,13 @@ Key highlights:
 #### Overview Dashboard
 > High-level analytics: total products, pending approvals, and sales metrics.
 
-![Seller Dashboard — Overview]<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 45 01 PM" src="https://github.com/user-attachments/assets/a511cd3b-aac5-4058-8b66-d6031cb091d7" />
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 45 01 PM" src="https://github.com/user-attachments/assets/a511cd3b-aac5-4058-8b66-d6031cb091d7" />
 
 
 #### My Products
 > View, edit, and delete listed products. See approval status (Pending / Published / Blocked) at a glance.
 
-![Seller — My Products]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 45 20 PM" src="https://github.com/user-attachments/assets/be59da55-60de-456f-99ac-9b09b2183b7d" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 45 20 PM" src="https://github.com/user-attachments/assets/be59da55-60de-456f-99ac-9b09b2183b7d" />
 
 
 #### Add / Edit Product
@@ -194,15 +189,15 @@ Key highlights:
 #### Chat with Admin
 > Real-time in-platform messaging with the admin team for queries, updates, and support.
 
-![Seller — Chat with Admin]<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 45 46 PM" src="https://github.com/user-attachments/assets/50ca257b-6b93-41de-82ae-3cf05678f7eb" />
+<img width="1406" height="831" alt="Screenshot 2026-05-23 at 3 45 46 PM" src="https://github.com/user-attachments/assets/50ca257b-6b93-41de-82ae-3cf05678f7eb" />
 
 
 #### Seller Login & Registration
 | Seller Login | Seller Registration |
 |:---:|:---:|
-| ![Seller Login]![Uploading Screenshot 2026-05-23 at 4.02.05 PM.png…]()
-| ![Seller Register]
-|
+ <img width="1470" height="956" alt="Screenshot 2026-05-23 at 4 23 09 PM" src="https://github.com/user-attachments/assets/4bdaa3cf-4336-4dd3-ac9b-2c21dc9a01be" />
+ <img width="1406" height="831" alt="Screenshot 2026-05-23 at 4 02 05 PM" src="https://github.com/user-attachments/assets/85ecdb59-3093-40d1-8dab-333257d6aa3c" />
+
 
 ---
 
@@ -213,31 +208,37 @@ Key highlights:
 #### Overview Dashboard
 > Platform-wide metrics — total users, sellers, products, and revenue.
 
-![Admin Dashboard — Overview]
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 42 46 PM" src="https://github.com/user-attachments/assets/8f5967c8-5095-42f3-96d1-54403aa25a1c" />
+
 
 
 #### Product Moderation
 > Review seller-submitted products and **Approve**, **Block**, or **Publish** them.
 
-![Admin — Product Moderation]
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 44 19 PM" src="https://github.com/user-attachments/assets/610059c2-c37b-4fbc-84f6-9b361b9186bc" />
+
 
 
 #### Seller Management
 > View all registered sellers, their product counts, and block/unblock accounts.
 
-![Admin — Seller Management]
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 44 13 PM" src="https://github.com/user-attachments/assets/37adb4a3-1bec-4b75-9e20-567a4756e8b9" />
+
+
 
 
 #### User Management
 > View all registered users, manage accounts, and block suspicious activity.
 
-![Admin — User Management]
+<img width="1404" height="831" alt="Screenshot 2026-05-23 at 3 44 25 PM" src="https://github.com/user-attachments/assets/d03cb094-3566-4a9d-a5a4-9f3dd017024d" />
+
 
 
 #### Admin Login & Registration
 | Admin Login |
 |:---:|:---:|
-| ![Admin Login]![Uploading Screenshot 2026-05-23 at 4.02.10 PM.png…]()
+| <img width="1406" height="831" alt="Screenshot 2026-05-23 at 4 02 10 PM" src="https://github.com/user-attachments/assets/7cc355e6-f0e5-4b1b-8a77-bcb231b35ac0" />
+
 
 ---
 
