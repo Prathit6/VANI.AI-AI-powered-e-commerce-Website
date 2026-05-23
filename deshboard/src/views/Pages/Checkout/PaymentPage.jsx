@@ -17,7 +17,7 @@ const FIXED_UPI_ID = "9302528274@ybl";
 
 // Sends cookies (accessToken) to ecommerce-backend
 const shopApi = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: (import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api').replace('/api', ''),
   withCredentials: true,
 });
 

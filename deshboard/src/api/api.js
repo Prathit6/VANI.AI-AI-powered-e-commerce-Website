@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
   withCredentials: true,
 });
 
@@ -46,7 +46,8 @@ export const getImageUrl = (imagePath) => {
   if (!imagePath) return '';
   if (imagePath.startsWith('http')) return imagePath;
   const clean = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
-  return `http://localhost:3000/${clean}`;
+  const base = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:3000';
+return `${base}/${clean}`;
 };
 
 export default api;
