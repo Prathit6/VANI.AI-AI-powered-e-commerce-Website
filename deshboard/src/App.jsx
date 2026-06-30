@@ -1,3 +1,4 @@
+// src/App.js
 import { useEffect } from 'react';
 import { useDispatch, Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
@@ -5,9 +6,10 @@ import { Toaster } from 'react-hot-toast';
 import './App.css';
 import authReducer, { get_user_info } from './store/Reducers/authReducer';
 import { CartProvider } from './context/CartProvider';
-import { SocketProvider } from './context/SocketProvider';   // ← ADD THIS
+import { SocketProvider } from './context/SocketProvider';
 import AppRouter from './router/Router';
 import StoreNotificationPopup from './components/StoreNotificationPopup';
+// ✅ FloatingChatBot removed from here — it's inside Router.jsx (needs BrowserRouter context)
 
 const store = configureStore({
   reducer: { auth: authReducer },
@@ -35,7 +37,7 @@ function AppContent() {
         storageKey="store_notif_v1"
         onAllow={() => console.log('User subscribed!')}
       />
-      <SocketProvider>        {/* ← WRAP APPROUTER */}
+      <SocketProvider>
         <AppRouter />
       </SocketProvider>
       <Toaster

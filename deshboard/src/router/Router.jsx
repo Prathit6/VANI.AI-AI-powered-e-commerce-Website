@@ -1,8 +1,10 @@
+// src/router/Router.jsx
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Header } from '../components/Header';
 import ProtectedRoute from './routes/ProtectRoutes';
 import GuestRoute from './routes/Guestroute';
+import FloatingChatBot from '../components/FloatingChatBot'; // ✅ moved here
 
 const Home = lazy(() => import('../views/Pages/Home/HomePage.jsx'));
 const ProductDetail = lazy(() => import('../views/Pages/Home/Productdetailpage.jsx'));
@@ -21,6 +23,7 @@ const TrackingPage = lazy(() =>
   import('../views/Pages/order/TrackingPage.jsx').then(m => ({ default: m.TrackingPage }))
 );
 const LandingPage = lazy(() => import('../views/Pages/Landing/LandingPage.jsx'));
+const AiChatWidget = lazy(() => import('../components/AiChatWidget.jsx'));
 
 const PageLoader = () => (
   <div style={{
@@ -36,12 +39,15 @@ const PageLoader = () => (
 const AppLayout = ({ children }) => {
   const location = useLocation();
   const hideHeader = ['/checkout', '/payment'].includes(location.pathname);
+
   return (
     <>
       {!hideHeader && <Header />}
       <div style={{ marginTop: hideHeader ? '0' : '64px' }}>
         {children}
       </div>
+      {/* ✅ Inside BrowserRouter so useNavigate/useLocation work */}
+      <FloatingChatBot />
     </>
   );
 };
@@ -86,8 +92,9 @@ const AppRouter = () => {
             <Route path="/tracking" element={
               <ProtectedRoute allowedRoles={['user', 'admin', 'seller']}><TrackingPage /></ProtectedRoute>
             } />
+            <Route path="/aiassistant" element={<AiChatWidget />} />
 
-            {/* Wildcard last */}
+            {/* Wildcard */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AppLayout>
