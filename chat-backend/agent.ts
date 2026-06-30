@@ -75,7 +75,7 @@ export async function callAgent(client: MongoClient, query: string, thread_id: s
       const realResults = await vectorStoreRealDB.similaritySearchWithScore(query, n);
 
       if (realResults.length > 0) {
-        console.log(`✅ Found ${realResults.length} products via vector search`);
+        console.log(` Found ${realResults.length} products via vector search`);
         return JSON.stringify({
           results: realResults,
           searchType: "vector",
@@ -99,7 +99,7 @@ export async function callAgent(client: MongoClient, query: string, thread_id: s
         .limit(n)
         .toArray();
 
-      console.log(`✅ Found ${textReal.length} products via text search`);
+      console.log(`Found ${textReal.length} products via text search`);
 
       return JSON.stringify({
         results: textReal,
@@ -141,6 +141,7 @@ export async function callAgent(client: MongoClient, query: string, thread_id: s
     }
 
     // ---------------------- FIXED CALLMODEL WITH SAFE TEMPLATE ----------------------
+
     async function callModel(state: any) {
       return retryWithBackoff(async () => {
         const prompt = ChatPromptTemplate.fromMessages([
@@ -220,7 +221,7 @@ Current time: {time}`
     // ==================== EXTRACT PRODUCT IDs ====================
     const productIds: string[] = [];
     
-    console.log("\n📦 Extracting product IDs from tool results...");
+    console.log("\n Extracting product IDs from tool results...");
     
     for (const msg of finalState.messages) {
       if (msg instanceof AIMessage && msg.tool_calls && msg.tool_calls.length > 0) {
@@ -259,7 +260,7 @@ Current time: {time}`
                   });
                 }
               } catch (parseError) {
-                console.error("❌ Error parsing tool result:", parseError);
+                console.error("Error parsing tool result:", parseError);
               }
             }
           }
@@ -269,7 +270,7 @@ Current time: {time}`
 
     const uniqueProductIds = [...new Set(productIds)].slice(0, 12);
     
-    console.log(`✅ Extracted ${uniqueProductIds.length} unique product IDs`);
+    console.log(`Extracted ${uniqueProductIds.length} unique product IDs`);
     console.log("Product IDs:", uniqueProductIds);
 
     return {
@@ -278,7 +279,7 @@ Current time: {time}`
     };
 
   } catch (error: any) {
-    console.error("❌ Agent error:", error);
+    console.error("Agent error:", error);
 
     if (error.status === 429) {
       throw new Error("Too many requests. Try again soon.");

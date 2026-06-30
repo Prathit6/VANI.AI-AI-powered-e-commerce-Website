@@ -12,18 +12,18 @@ const client = new MongoClient(process.env.MONGODB_ATLAS_URI!);
 
 async function start() {
   try {
-    console.log("🔌 Connecting to MongoDB Atlas...");
+    console.log("Connecting to MongoDB Atlas...");
     await client.connect();
     await client.db("admin").command({ ping: 1 });
-    console.log("✅ MongoDB Atlas connected!");
+    console.log(" MongoDB Atlas connected!");
 
     const db = client.db("inventory_database");
     const itemsCount = await db.collection("items").countDocuments();
     console.log(`📦 Found ${itemsCount} items in database`);
   } catch (error: any) {
-    console.error("❌ MongoDB connection FAILED!");
+    console.error(" MongoDB connection FAILED!");
     console.error("Error:", error.message);
-    console.log("\n🔧 Fix this first:");
+    console.log("\nFix this first:");
     console.log("1. Go to MongoDB Atlas → Network Access");
     console.log("2. Click 'Add IP Address' → Allow 0.0.0.0/0");
     console.log("3. Wait 2 minutes and try again");
@@ -37,12 +37,12 @@ async function start() {
   app.post("/chat", async (req, res) => {
     try {
       const threadId = Date.now().toString();
-      console.log(`\n💬 New chat: "${req.body.message}"`);
+      console.log(`\n New chat: "${req.body.message}"`);
       
       const result = await callAgent(client, req.body.message, threadId);
       
-      console.log(`✅ Response generated`);
-      console.log(`📦 Product IDs: ${result.productIds?.length || 0}`);
+      console.log(`Response generated`);
+      console.log(`Product IDs: ${result.productIds?.length || 0}`);
       
       res.json({ 
         threadId, 
@@ -50,7 +50,7 @@ async function start() {
         productIds: result.productIds || []
       });
     } catch (error: any) {
-      console.error("❌ Chat error:", error);
+      console.error(" Chat error:", error);
       res.status(500).json({
         error: "Failed",
         response: "Sorry, error occurred.",
@@ -62,12 +62,12 @@ async function start() {
   // UPDATED: Continue chat endpoint - returns productIds
   app.post("/chat/:threadId", async (req, res) => {
     try {
-      console.log(`\n💬 Continue chat [${req.params.threadId}]: "${req.body.message}"`);
+      console.log(`\n Continue chat [${req.params.threadId}]: "${req.body.message}"`);
       
       const result = await callAgent(client, req.body.message, req.params.threadId);
       
-      console.log(`✅ Response generated`);
-      console.log(`📦 Product IDs: ${result.productIds?.length || 0}`);
+      console.log(` Response generated`);
+      console.log(`Product IDs: ${result.productIds?.length || 0}`);
       
       res.json({ 
         threadId: req.params.threadId, 
@@ -75,7 +75,7 @@ async function start() {
         productIds: result.productIds || []
       });
     } catch (error: any) {
-      console.error("❌ Chat error:", error);
+      console.error("Chat error:", error);
       res.status(500).json({
         error: "Failed",
         response: "Sorry, error occurred.",
@@ -91,7 +91,7 @@ async function start() {
     console.log("\n🔍 Fetching products by IDs:", ids);
 
     if (!ids || !Array.isArray(ids) || ids.length === 0) {
-      console.log("❌ Invalid IDs");
+      console.log(" Invalid IDs");
       return res.status(400).json({
         error: "Invalid product IDs",
         products: [],
@@ -144,14 +144,14 @@ async function start() {
         .map((id) => allProducts.find((p) => p.id === id))
         .filter((p) => p !== undefined);
 
-      console.log(`✅ Returning ${sortedProducts.length} products\n`);
+      console.log(` Returning ${sortedProducts.length} products\n`);
 
       res.json({
         products: sortedProducts,
         count: sortedProducts.length,
       });
     } catch (error: any) {
-      console.error("❌ Error fetching products:", error);
+      console.error(" Error fetching products:", error);
       res.status(500).json({
         error: "Internal server error",
         products: [],
@@ -161,8 +161,8 @@ async function start() {
 
   const PORT = process.env.PORT || 8000;
   app.listen(PORT, () => {
-    console.log(`\n🚀 Server running on http://localhost:${PORT}`);
-    console.log(`📡 Endpoints:`);
+    console.log(`\n Server running on http://localhost:${PORT}`);
+    console.log(`Endpoints:`);
     console.log(`   POST /chat`);
     console.log(`   POST /chat/:threadId`);
     console.log(`   POST /products/by-ids`);
